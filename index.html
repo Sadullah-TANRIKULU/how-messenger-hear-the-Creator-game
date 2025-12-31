@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>The Chosen Messenger</title>
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #2c3e50;
+        color: white;
+        margin: 0;
+        padding: 20px;
+        box-sizing: border-box;
+        min-height: 100vh;
+      }
+
+      #grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        width: 100%;
+        max-width: 600px;
+        margin-bottom: 30px;
+      }
+
+      @media (max-width: 480px) {
+        #grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      .character-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 10px;
+        border-radius: 15px;
+        cursor: pointer;
+      }
+
+      /* Tapping the label/image selects the radio button */
+      label {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+
+      .img-wrapper {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1/1;
+        margin-bottom: 10px;
+      }
+
+      .human-img {
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+        object-fit: cover;
+        border: 3px solid transparent;
+        transition: all 0.3s ease;
+        background: #34495e;
+      }
+
+      /* Show who is currently selected with a blue border */
+      input[type="radio"]:checked + .img-wrapper .human-img {
+        border-color: #3498db;
+      }
+
+      /* Glow effect for the Chosen One when they hear the voice */
+      .active .human-img {
+        border-color: #f1c40f !important;
+        transform: scale(1.1);
+        box-shadow: 0 0 20px #f1c40f;
+      }
+
+      .speech-bubble {
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #f1c40f;
+        color: #2c3e50;
+        padding: 4px 10px;
+        border-radius: 10px;
+        font-size: 12px;
+        font-weight: bold;
+        display: none;
+        z-index: 10;
+      }
+
+      .active .speech-bubble {
+        display: block;
+      }
+
+      button#micBtn {
+        padding: 15px;
+        font-size: 1rem;
+        background-color: #e67e22;
+        color: white;
+        border: none;
+        border-radius: 50px;
+        margin-bottom: 20px;
+        width: 100%;
+        max-width: 300px;
+        font-weight: bold;
+      }
+
+      input[type="radio"] {
+        margin-top: 10px;
+        width: 20px;
+        height: 20px;
+        accent-color: #f1c40f;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>The Chosen Messenger</h1>
+
+    <button id="micBtn">Start Listening</button>
+
+    <div id="grid">
+      <div class="character-container" id="c0">
+        <label>
+          <input type="radio" name="chosen" value="0" checked />
+          <div class="img-wrapper">
+            <div class="speech-bubble">I hear you</div>
+            <img src="./assets/barbarian.webp" class="human-img" />
+          </div>
+        </label>
+      </div>
+
+      <div class="character-container" id="c1">
+        <label>
+          <input type="radio" name="chosen" value="1" />
+          <div class="img-wrapper">
+            <div class="speech-bubble">I hear you</div>
+            <img src="./assets/dark_prince_2.webp" class="human-img" />
+          </div>
+        </label>
+      </div>
+
+      <div class="character-container" id="c2">
+        <label>
+          <input type="radio" name="chosen" value="2" />
+          <div class="img-wrapper">
+            <div class="speech-bubble">I hear you</div>
+            <img src="./assets/fire_spirit.webp" class="human-img" />
+          </div>
+        </label>
+      </div>
+
+      <div class="character-container" id="c3">
+        <label>
+          <input type="radio" name="chosen" value="3" />
+          <div class="img-wrapper">
+            <div class="speech-bubble">I hear you</div>
+            <img src="./assets/giant_skeleton.webp" class="human-img" />
+          </div>
+        </label>
+      </div>
+
+      <div class="character-container" id="c4">
+        <label>
+          <input type="radio" name="chosen" value="4" />
+          <div class="img-wrapper">
+            <div class="speech-bubble">I hear you</div>
+            <img src="./assets/knight.webp" class="human-img" />
+          </div>
+        </label>
+      </div>
+
+      <div class="character-container" id="c5">
+        <label>
+          <input type="radio" name="chosen" value="5" />
+          <div class="img-wrapper">
+            <div class="speech-bubble">I hear you</div>
+            <img src="./assets/giant.webp" class="human-img" />
+          </div>
+        </label>
+      </div>
+
+      <div class="character-container" id="c6">
+        <label>
+          <input type="radio" name="chosen" value="6" />
+          <div class="img-wrapper">
+            <div class="speech-bubble">I hear you</div>
+            <img src="./assets/goblin.webp" class="human-img" />
+          </div>
+        </label>
+      </div>
+
+      <div class="character-container" id="c7">
+        <label>
+          <input type="radio" name="chosen" value="7" />
+          <div class="img-wrapper">
+            <div class="speech-bubble">I hear you</div>
+            <img src="./assets/wizard.webp" class="human-img" />
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <script>
+      const micBtn = document.getElementById("micBtn");
+      let isProcessing = false;
+
+      micBtn.addEventListener("click", async () => {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        const context = new AudioContext();
+
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({
+            audio: true,
+          });
+          micBtn.textContent = "Listening...";
+          micBtn.style.backgroundColor = "#27ae60";
+
+          const source = context.createMediaStreamSource(stream);
+          const analyser = context.createAnalyser();
+          analyser.fftSize = 256;
+          source.connect(analyser);
+          const data = new Uint8Array(analyser.frequencyBinCount);
+
+          function listen() {
+            analyser.getByteFrequencyData(data);
+            let volume = data.reduce((a, b) => a + b) / data.length;
+            if (volume > 35 && !isProcessing) {
+              respond();
+            }
+            requestAnimationFrame(listen);
+          }
+          listen();
+        } catch (err) {
+          alert(
+            "Microphone error. Please ensure you are on HTTPS and allowed access."
+          );
+        }
+      });
+
+      function respond() {
+        isProcessing = true;
+        const selectedValue = document.querySelector(
+          'input[name="chosen"]:checked'
+        ).value;
+        const target = document.getElementById("c" + selectedValue);
+        target.classList.add("active");
+        setTimeout(() => {
+          target.classList.remove("active");
+          isProcessing = false;
+        }, 2000);
+      }
+    </script>
+  </body>
+</html>
